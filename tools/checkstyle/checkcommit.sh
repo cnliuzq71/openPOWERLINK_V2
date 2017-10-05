@@ -37,7 +37,7 @@ set -e
 #
 # verify commit message line length
 #
-len=`git log -n 1 --format=%B $GIT_COMMIT | awk '{ if (length > L) {L=length} }END{ print L}'`
+len=`git log -n 1 --format=%B $GIT_COMMIT | wc -L`
 if [[ "$len" -gt "72" ]]; then
 	echo "ERROR: Maximum line length of commit message ($len) is bigger than 72 characters!"
 	exit 1
